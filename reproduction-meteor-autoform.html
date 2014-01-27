@@ -1,0 +1,58 @@
+<head>
+  <title>reproduction-meteor-autoform</title>
+</head>
+
+<body>
+  {{> hello}}
+  {{> insertBookForm}}
+</body>
+
+<template name="hello">
+  <h1>Hello World!</h1>
+  {{greeting}}
+  <input type="button" value="Click" />
+</template>
+
+<template name="insertBookForm">
+    {{#autoForm schema=booksCollection id="insertBookForm"}}
+    <fieldset>
+        <legend>Add a Book</legend>
+        <div class="form-group{{#if afFieldIsInvalid 'title'}} has-error{{/if}}">
+            {{afFieldLabel 'title'}}
+            {{afFieldInput 'title'}}
+            {{#if afFieldIsInvalid 'title'}}
+            <span class="help-block">{{afFieldMessage 'title'}}</span>
+            {{/if}}
+        </div>
+        <div class="form-group{{#if afFieldIsInvalid 'author'}} has-error{{/if}}">
+            {{afFieldLabel 'author'}}
+            {{afFieldInput 'author'}}
+            {{#if afFieldIsInvalid 'author'}}
+            <span class="help-block">{{afFieldMessage 'author'}}</span>
+            {{/if}}
+        </div>
+        <div class="form-group{{#if afFieldIsInvalid 'summary'}} has-error{{/if}}">
+            {{afFieldLabel 'summary'}}
+            {{afFieldInput 'summary'}}
+            {{#if afFieldIsInvalid 'summary'}}
+            <span class="help-block">{{afFieldMessage 'summary'}}</span>
+            {{/if}}
+        </div>
+        <div class="form-group{{#if afFieldIsInvalid 'copies'}} has-error{{/if}}">
+            {{afFieldLabel 'copies'}}
+            {{afFieldInput 'copies'}}
+            {{#if afFieldIsInvalid 'copies'}}
+            <span class="help-block">{{afFieldMessage 'copies'}}</span>
+            {{/if}}
+        </div>
+        <div class="form-group{{#if afFieldIsInvalid 'lastCheckedOut'}} has-error{{/if}}">
+            {{afFieldLabel 'lastCheckedOut'}}
+            {{afFieldInput 'lastCheckedOut'}}
+            {{#if afFieldIsInvalid 'lastCheckedOut'}}
+            <span class="help-block">{{afFieldMessage 'lastCheckedOut'}}</span>
+            {{/if}}
+        </div>
+    </fieldset>
+    <button type="submit" class="btn btn-primary insert">Insert</button>
+    {{/autoForm}}
+</template>
